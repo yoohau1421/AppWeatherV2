@@ -1,0 +1,154 @@
+@import url("https://fonts.googleapis.com/css?family=poppins:wght@300;400;500;600;700;800;900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+   /* font sans-serif được dùng nhiều trong web */
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    /* Giúp căn giữa nội dung theo chiều dọc.
+    Nên dùng min-height: 100vh; khi thiết kế bố cục web để tránh nội dung bị cắt! */
+    background: url("images/background.jpg");
+    background-size: cover; /* Ảnh sẽ được hiển thị đầy đủ */
+    background-position: center; /* Ảnh sẽ được hiển thị ở giữa */
+}
+.container {
+    position: relative;
+    width: 400px;
+    height: 555px;
+    background: rgba(255, 255, 255, .1); 
+    /* Màu nền có độ trong suốt */
+    backdrop-filter: blur(30px);
+    /* Làm mờ nền */
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 16px;
+    padding: 20px;
+    color: white;
+}
+
+.search-box {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.search-box i {
+    position: absolute;
+    left: 10px;
+    font-size: 28px;
+}
+
+.search-box input {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, .2);
+    outline: none;
+    border-radius: 10px;
+    font-size: 22px;
+    color: #fff;
+    font-weight: 500; /* Độ đậm của font */
+    text-transform: uppercase;
+    padding: 0 40px 0 42px;
+}
+
+.search-box input::placeholder {
+    color: #fff;
+    text-transform: capitalize; 
+    /* Chuyển chữ cái đầu tiên của từ thành chữ in hoa */
+}
+
+.search-box button {
+    position: absolute;
+    right: 0;
+    width: 40px;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 28px;
+    color: white;
+    padding: 0 40px 0 5px;
+}
+
+.weather-box {
+    text-align: center;
+    margin: 40px 0;
+}
+
+.weather img {
+    width: 60%;
+}
+
+.weather-box .nhietdo {
+    position: relative;
+    font-size: 64px;
+    line-height: 1;
+    font-weight: 700;
+    margin: 20px 0 6px -30px;
+}
+.weather-box .nhietdo span {
+    position: absolute;
+    font-size: 24px;
+    margin-left: 4px;
+}
+
+.weather-box .mieuta {
+    font-size: 24px;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.weather-deatils {
+    position: absolute;
+    bottom: 40px;
+    left: 0;
+    width: 100%;
+    padding: 0 20px;
+    display: flex;
+}
+
+.weather-deatils .humidity,
+.weather-deatils .wind {
+    display: flex;
+    align-items: center;
+    width: 50%;
+}
+
+.weather-deatils .humidity {
+    padding-left: 20px;
+    justify-content: flex-start;
+}
+
+.weather-deatils .wind {
+    padding-right: 20px;
+    justify-content: flex-end;
+}
+
+.weather-deatils i {
+    font-size: 56px;
+    margin-right: 10px;
+}
+
+.weather-deatils span {
+    font-size: 22px;
+    font-weight: 500;
+    display: inline-block;
+}
+
+.weather-deatils p {
+    font-size: 14px;
+    font-weight: 500;
+    margin-top: 5px;
+}
