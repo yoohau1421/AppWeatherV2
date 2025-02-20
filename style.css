@@ -18,11 +18,12 @@ body {
     background: url("images/background.jpg");
     background-size: cover; /* Ảnh sẽ được hiển thị đầy đủ */
     background-position: center; /* Ảnh sẽ được hiển thị ở giữa */
+    overflow: hidden; 
 }
 .container {
     position: relative;
     width: 400px;
-    height: 555px;
+    height: 100px;
     background: rgba(255, 255, 255, .1); 
     /* Màu nền có độ trong suốt */
     backdrop-filter: blur(30px);
@@ -31,6 +32,8 @@ body {
     border-radius: 16px;
     padding: 20px;
     color: white;
+    transition: height .6s ease; 
+    /* Hiệu ứng chuyển động */
 }
 
 .search-box {
@@ -87,6 +90,42 @@ body {
     margin: 40px 0;
 }
 
+.weather-box, .weather-deatils, .not-found {
+    overflow: hidden;
+    /* Ẩn nội dung vượt ra ngoài khung */
+    visibility: hidden;
+}
+
+.weather-box.active, .weather-deatils.active, .not-found.active {
+    visibility: visible;
+}
+
+.weather-box .box, .not-found .box {
+    transform: translateY(-100%); 
+    /* Di chuyển lên trên */
+}
+
+.weather-box.active .box, 
+.not-found.active .box {
+    transform: translateY(0%); 
+    /* Di chuyển xuống dưới */
+    transition: transform 1s ease;
+    /* Hiệu ứng chuyển động */
+    transition-delay: .6s;
+    /* Độ trễ của hiệu ứng */
+}
+
+.weather-box .box .info-weather {
+    transform: translateY(-120%);
+}
+
+.container.active .weather-box .box .info-weather,
+.container.active .weather-deatils .humidity .info-humidity,
+.container.active .weather-deatils .wind .info-wind {
+    transform: translateY(0%);
+    transition: transform 1s ease;
+}
+
 .weather img {
     width: 60%;
 }
@@ -124,6 +163,20 @@ body {
     display: flex;
     align-items: center;
     width: 50%;
+    transform: translateY(-100%);
+}
+
+.weather-deatils.active .humidity,
+.weather-deatils.active .wind {
+    transform: translateY(0);
+    transition: transform 1s ease;
+    transition-delay: 1.2s;
+}
+
+.weather-deatils .humidity .info-humidity,
+.weather-deatils .wind .info-wind {
+    transform: translateY(-100%);
+    overflow: hidden;
 }
 
 .weather-deatils .humidity {
@@ -151,4 +204,62 @@ body {
     font-size: 14px;
     font-weight: 500;
     margin-top: 5px;
+}
+
+.not-found {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-top: 100px;
+    text-align: center;
+}
+
+.not-found img {
+    width: 65%;
+}
+
+.not-found p {
+    font-size: 22px;
+    font-weight: 500;
+    margin-top: 12px;
+}
+
+.city-hide {
+    display: none;
+}
+
+#clone-weather,
+#clone-humidity,
+#clone-wind {
+    position: absolute;
+    transform: translateY(-100%);
+}
+
+#clone-weather .weather {
+    transform: translateY(120%);
+    transition: transform 1s ease, ocpaity 0s;
+    transition-delay: 0s, 2s;
+}
+
+.weather-box:not(.active) #clone-weather .weather {
+    opacity: 0;
+    transition-delay: 0s;
+}
+
+.active-clone #clone-weather .weather {
+    transform: translateY(0);
+}
+
+#clone-humidity span,
+#clone-wind span {
+    transform: translateY(100%);
+    /* Di chuyển xuống dưới */
+    transition: transform 1s ease;
+    /* Hiệu ứng chuyển động */
+}
+
+.active-clone #clone-humidity span,
+.active-clone #clone-wind span {
+    transform: translateY(0);
+    /* Di chuyển xuống dưới */
 }
